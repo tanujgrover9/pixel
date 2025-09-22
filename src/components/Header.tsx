@@ -1,178 +1,132 @@
-import { useState } from "react";
+// src/components/Header.tsx
 import { Link, useLocation } from "react-router-dom";
-import { FiSearch, FiUpload, FiMenu, FiX } from "react-icons/fi";
-import { Sparkles } from "lucide-react";
+import { useState } from "react";
+import { FiHome, FiShoppingBag, FiUsers, FiUser, FiMenu, FiX, FiLogIn } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.png";
 
 const nav = [
-  { label: "Home", to: "/" },
-  { label: "Generate", to: "/generate", special: true },
-  { label: "Marketplace", to: "/marketplace" },
-  { label: "Community", to: "/community" },
-  { label: "Creator", to: "/creator" },
+  { label: "Home", to: "/", icon: <FiHome /> },
+  { label: "Marketplace", to: "/marketplace", icon: <FiShoppingBag /> },
+  { label: "Community", to: "/community", icon: <FiUsers /> },
+  { label: "Creator", to: "/creator", icon: <FiUser /> },
 ];
 
 export default function Header() {
   const loc = useLocation();
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full backdrop-blur-lg bg-black/70 border-b border-white/10 sticky top-0 z-50">
-      <div className="container mx-auto px-5 py-3 flex items-center justify-between">
+    <header className="w-full sticky top-0 z-50 px-4 py-3 backdrop-blur-lg bg-gradient-to-r from-gray-800/60 via-gray-900/70 to-gray-800/60 border-b border-white/10 shadow-lg">
+      <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-2">
           <motion.img
             src={logo}
-            alt="AI Market Logo"
-            className="w-30 h-10 rounded-lg shadow-md"
+            alt="Logo"
+            className="w-24 h-9 rounded-lg"
             whileHover={{ rotate: 5, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 200 }}
           />
-          <div className="hidden md:block">
-            <div className="text-xs text-gray-400">
-              Showcase & Sell Your AI Creations
-            </div>
-          </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
+        {/* Navigation (center, hidden on mobile) */}
+        <nav className="hidden md:flex items-center gap-3 px-4 py-2 rounded-full backdrop-blur-md bg-white/20 border border-white/20 shadow-sm">
           {nav.map((n) => {
             const isActive = loc.pathname === n.to;
-            const isSpecial = n.special;
-
             return (
-              <motion.div
+              <Link
                 key={n.to}
-                whileHover={{ y: -2 }}
-                className="relative flex flex-col items-center"
+                to={n.to}
+                className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all
+                  ${
+                    isActive
+                      ? "bg-gray-900 text-white shadow"
+                      : "text-gray-200 hover:bg-gray-700/50"
+                  }`}
               >
-                <Link
-                  to={n.to}
-                  className={`text-sm font-medium transition-all duration-300 flex items-center gap-1
-                    ${
-                      isSpecial
-                        ? "px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-fuchsia-500 text-white shadow-lg hover:shadow-pink-500/50 relative overflow-hidden"
-                        : isActive
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white"
-                    }`}
-                >
-                  {isSpecial && (
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-fuchsia-400 opacity-30 blur-xl"
-                      animate={{ opacity: [0.2, 0.5, 0.2] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  )}
-                  {isSpecial && (
-                    <Sparkles
-                      size={16}
-                      className="text-yellow-300 relative z-10"
-                    />
-                  )}
-                  <span className="relative z-10">{n.label}</span>
-                </Link>
-
-                {/* Underline animation */}
-                {!isSpecial && isActive && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 w-8 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 rounded-full"
-                  />
-                )}
-              </motion.div>
+                {n.icon}
+                {n.label}
+              </Link>
             );
           })}
         </nav>
 
         {/* Right Section */}
         <div className="flex items-center gap-3">
-          {/* Search - hidden on mobile */}
-          <div className="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 transition px-3 py-2 rounded-2xl">
-            <FiSearch className="text-gray-300" />
-            <input
-              className="bg-transparent outline-none text-sm w-44 placeholder-gray-400 text-white rounded-2xl"
-              placeholder="Search images, videos..."
-            />
-          </div>
-
-          {/* Upload */}
-          <motion.div whileHover={{ scale: 1.05 }} className="hidden md:block">
-            <Link
-              to="/upload"
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition font-medium"
-            >
-              <FiUpload /> Upload
-            </Link>
-          </motion.div>
-
-          {/* Hamburger for mobile */}
-          <button
-            className="md:hidden text-white text-2xl"
-            onClick={() => setOpen(!open)}
+          {/* Generate Button */}
+          <Link
+            to="/generate"
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-medium shadow transition"
           >
-            {open ? <FiX /> : <FiMenu />}
+            Generate
+          </Link>
+
+          {/* Login Icon Button */}
+          <Link
+            to="/login"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 text-white shadow transition"
+          >
+            <FiLogIn size={20} />
+          </Link>
+
+          {/* Hamburger Menu (mobile only) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white"
+          >
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/90 border-t border-white/10 px-5 py-4 flex flex-col gap-4"
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden mt-3 flex flex-col gap-3 px-4 py-4 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 shadow"
           >
             {nav.map((n) => {
               const isActive = loc.pathname === n.to;
-              const isSpecial = n.special;
-
               return (
                 <Link
                   key={n.to}
                   to={n.to}
-                  onClick={() => setOpen(false)}
-                  className={`text-base font-medium transition-all duration-300 flex items-center gap-2
+                  onClick={() => setMenuOpen(false)}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-base font-medium transition
                     ${
-                      isSpecial
-                        ? "px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-fuchsia-500 text-white shadow-lg hover:shadow-pink-500/50 relative overflow-hidden"
-                        : isActive
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white"
+                      isActive
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-200 hover:bg-gray-700/50"
                     }`}
                 >
-                  {isSpecial && (
-                    <>
-                      <motion.span
-                        className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-fuchsia-400 opacity-30 blur-xl"
-                        animate={{ opacity: [0.2, 0.5, 0.2] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
-                      <Sparkles
-                        size={16}
-                        className="text-yellow-300 relative z-10"
-                      />
-                    </>
-                  )}
-                  <span className="relative z-10">{n.label}</span>
+                  {n.icon}
+                  {n.label}
                 </Link>
               );
             })}
 
-            {/* Upload button inside mobile menu */}
-            <Link
-              to="/upload"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition font-medium mt-2"
-            >
-              <FiUpload /> Upload
-            </Link>
-          </motion.nav>
+            {/* Generate + Login buttons in mobile menu */}
+            <div className="flex flex-col gap-2 mt-2">
+              <Link
+                to="/generate"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center px-5 py-2 rounded-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-medium shadow transition"
+              >
+                Generate
+              </Link>
+              <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 text-white shadow transition"
+              >
+                <FiLogIn size={20} />
+              </Link>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

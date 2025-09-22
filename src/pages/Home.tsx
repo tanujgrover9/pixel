@@ -7,6 +7,8 @@ import Gallery from "../components/Imagegrid";
 import ToolsSection from "../components/Feature";
 import Testimonial from "../components/Testimonials";
 import { Link } from "react-router-dom";
+import PricingPlans from "../components/PricingPlans";
+
 
 export default function Home() {
   return (
@@ -38,14 +40,37 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent"
-          >
-            Showcase. Sell. Grow. <br /> Your AI Creations.
-          </motion.h1>
+       <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="text-5xl md:text-7xl font-extrabold leading-tight text-white"
+>
+  Showcase. Sell. Grow. <br /> Your{" "}
+  <span className="relative inline-block font-extrabold text-pink-400">
+    AI Creations
+    {/* Curly yellow underline shape */}
+    <svg
+      className="absolute -bottom-3 left-0 w-full h-5"
+      viewBox="0 0 100 20"
+      preserveAspectRatio="none"
+      fill="none"
+    >
+      <path
+        d="M2 10 
+           C15 2, 25 18, 40 10 
+           S70 2, 85 10 
+           S95 18, 100 10"
+        stroke="#FFD700"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+</motion.h1>
+
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -100,63 +125,7 @@ export default function Home() {
 
       <Gallery/>
 
-      {/* ---------------- Featured Section ---------------- */}
-      {/* <section className="container mx-auto px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-white mb-12 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
-        >
-        </motion.h2>
-        <FeaturedCarousel />
-      </section> */}
-
-      {/* ---------------- Trending Categories ---------------- */}
-      {/* <section className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-16 bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
-          Trending Categories
-        </h2>
-        <div className="grid md:grid-cols-5 gap-6">
-          {["AI Art", "Music", "3D Models", "Code Snippets", "Avatars"].map(
-            (cat, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.08 }}
-                className="p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 shadow-lg backdrop-blur-lg cursor-pointer"
-              >
-                <h3 className="text-lg font-semibold text-white">{cat}</h3>
-              </motion.div>
-            )
-          )}
-        </div>
-      </section> */}
-
-      {/* ---------------- Stats ---------------- */}
-      {/* <section className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-16 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          Platform Highlights
-        </h2>
-        <div className="grid md:grid-cols-3 gap-10">
-          {[{ number: "10k+", label: "Creators", icon: "👩‍🎨" },
-            { number: "50k+", label: "AI Creations", icon: "🎨" },
-            { number: "$2M+", label: "Sales Made", icon: "💰" }]
-            .map((stat, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                className="p-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 shadow-2xl"
-              >
-                <div className="text-5xl">{stat.icon}</div>
-                <div className="text-4xl font-extrabold text-white mt-4">
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 mt-2 text-lg">{stat.label}</div>
-              </motion.div>
-          ))}
-        </div>
-      </section> */}
+      
 
       {/* ---------------- How It Works ---------------- */}
       <section className="container mx-auto px-6">
@@ -198,77 +167,17 @@ export default function Home() {
       </section>
       <ToolsSection/>
 
-
+ <PricingPlans/>
       {/* ---------------- Testimonials ---------------- */}
       <Testimonial/>
-      {/* <section className="container mx-auto px-6 ">
-        <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent text-white">
-          What Creators Say
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[{
-              name: "Aria", role: "AI Artist",
-              text: "This platform gave me a stage for my artworks."
-            },
-            {
-              name: "Leo", role: "3D Creator",
-              text: "Selling my 3D AI renders has never been smoother."
-            },
-            {
-              name: "Maya", role: "Video Designer",
-              text: "Easy to upload and share my AI videos."
-            }]
-            .map((t, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                className="p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg shadow-xl"
-              >
-                <Star className="w-6 h-6 text-blue-400 mx-auto mb-4" />
-                <p className="text-gray-300 text-sm mb-6 italic">“{t.text}”</p>
-                <h4 className="text-white font-medium text-lg">{t.name}</h4>
-                <p className="text-gray-400 text-xs">{t.role}</p>
-              </motion.div>
-          ))}
-        </div>
-      </section> */}
+     
+
       <FreepikTutorials/>
 
-      {/* ---------------- FAQ ---------------- */}
-      <section className="container mx-auto px-6 my-10">
-        <h2 className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-6 max-w-3xl mx-auto">
-          {[{
-              q: "How do I upload my AI creations?",
-              a: "Click 'Upload Work', set your price, and publish your content."
-            },
-            {
-              q: "What file formats are supported?",
-              a: "Images (PNG, JPG), Videos (MP4), Audio (MP3, WAV), and 3D files (GLB, OBJ)."
-            },
-            {
-              q: "How do payments work?",
-              a: "Buyers pay securely, and you can withdraw earnings anytime."
-            }]
-            .map((faq, i) => (
-              <motion.details
-                key={i}
-                className="p-6 rounded-xl bg-white/5 border border-white/10 text-gray-300 cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-              >
-                <summary className="font-semibold text-white cursor-pointer">
-                  {faq.q}
-                </summary>
-                <p className="mt-3 text-sm">{faq.a}</p>
-              </motion.details>
-          ))}
-        </div>
-      </section>
+     
 
       {/* ---------------- Call to Action ---------------- */}
-      <section className="relative overflow-hidden rounded-[24px] bg-gradient-to-r from-blue-900/70 via-black to-indigo-900/70">
+      <section className=" relative overflow-hidden rounded-[24px] bg-gradient-to-r from-blue-900/70 via-black to-indigo-900/70 ">
   {/* Background Overlay */}
   <div className="absolute inset-0">
     <img
@@ -320,7 +229,38 @@ export default function Home() {
     </div>
   </div>
 </section>
-
+ {/* ---------------- FAQ ---------------- */}
+      <section className="container mx-auto px-6 mb-20">
+        <h2 className="text-4xl font-bold mb-16 mt-20 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6 max-w-3xl mx-auto">
+          {[{
+              q: "How do I upload my AI creations?",
+              a: "Click 'Upload Work', set your price, and publish your content."
+            },
+            {
+              q: "What file formats are supported?",
+              a: "Images (PNG, JPG), Videos (MP4), Audio (MP3, WAV), and 3D files (GLB, OBJ)."
+            },
+            {
+              q: "How do payments work?",
+              a: "Buyers pay securely, and you can withdraw earnings anytime."
+            }]
+            .map((faq, i) => (
+              <motion.details
+                key={i}
+                className="p-6 rounded-xl bg-white/5 border border-white/10 text-gray-300 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+              >
+                <summary className="font-semibold text-white cursor-pointer">
+                  {faq.q}
+                </summary>
+                <p className="mt-3 text-sm">{faq.a}</p>
+              </motion.details>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

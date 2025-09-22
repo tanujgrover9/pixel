@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Mail, FolderOpen, Rocket, Zap} from "lucide-react";
+import { Mail, FolderOpen, Rocket} from "lucide-react";
 import heroPreview from "../assets/image-generator-header.png";
 import FreepikTutorials from "../sections/FreepikTutorials";
 import Gallery from "../components/Imagegrid";

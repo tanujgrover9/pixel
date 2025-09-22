@@ -57,9 +57,12 @@ export default function Header() {
           {/* Generate Button */}
           <Link
             to="/generate"
-            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-medium shadow transition"
+            className="flex items-center justify-center gap-2 px-5 py-2 rounded-full  text-white shadow-lg 
+                 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 
+                 hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] 
+                 hover:scale-105 transition-all duration-300 overflow-hidden font-medium "
           >
-            Generate
+            Generate 🟆
           </Link>
 
           {/* Login Icon Button */}

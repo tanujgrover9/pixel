@@ -86,36 +86,36 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="mt-10 flex flex-wrap justify-center gap-5"
+            className="mt-10 flex flex-wrap justify-center gap-5 rounded-full"
           >
           <Link
   to="/upload"
-  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl font-semibold text-white shadow-lg transition-transform transform hover:scale-105"
+  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500  font-semibold text-white shadow-lg transition-transform transform hover:scale-105 rounded-full"
 >
   Upload Your Work
 </Link>
 
- <Link
+ {/* <Link
       to="/generate"
       className="relative inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white shadow-lg 
                  bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 
                  hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] 
                  hover:scale-105 transition-all duration-300 overflow-hidden group"
     >
-      {/* Animated shimmer overlay */}
+      
       <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 via-transparent to-white/20 opacity-0 group-hover:opacity-100 animate-gradient-x"></span>
 
-      {/* Icon */}
+     
       <Zap className="w-5 h-5 text-cyan-300 group-hover:rotate-12 transition-transform duration-300" />
 
-      {/* Text */}
+      
       <span className="relative z-10 bg-gradient-to-r from-cyan-200 via-pink-200 to-purple-200 bg-clip-text text-transparent">
         Generate
       </span>
-    </Link>
+    </Link> */}
 <Link
   to="/marketplace"
-  className="px-8 py-3 border border-white/20 rounded-xl text-gray-200 hover:bg-white/10 transition"
+  className="px-8 py-3 border border-white/20  text-gray-200 hover:bg-white/10 transition rounded-full"
 >
   Explore Marketplace
 </Link>

@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <h3 className="text-white text-2xl font-bold">AI Market</h3>
+            <h3 className="text-white text-2xl font-bold">PIKxl</h3>
             <p className="mt-3 text-sm leading-relaxed">
               Discover, buy, and sell AI-generated art, assets, and creative
               works from top creators worldwide.

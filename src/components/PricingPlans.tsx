@@ -110,8 +110,8 @@ const PricingPlans: React.FC = () => {
             </div>
           )}
           <div>
-            <h3 className="text-2xl font-bold mb-3">{plan.name}</h3>
-            <p className="text-gray-300 text-sm mb-6">{plan.description}</p>
+            <h3 className="text-2xl font-bold mb-3 text-white">{plan.name}</h3>
+            <p className="text-gray-300 text-sm mb-6 ">{plan.description}</p>
             <div className="flex items-baseline space-x-2 mb-6">
               <span className="text-3xl font-bold">{plan.price}</span>
               <span className="text-gray-400 text-sm">{plan.duration}</span>
@@ -126,7 +126,7 @@ const PricingPlans: React.FC = () => {
               {plan.buttonText}
             </button>
 
-            <h4 className="text-lg font-semibold mb-3">Plan Limits</h4>
+            <h4 className="text-lg font-semibold mb-3 text-white">Plan Limits</h4>
             <ul className="space-y-2 text-gray-300 mb-6">
               {plan.limits.map((limit, i) => (
                 <li key={i} className="flex items-start space-x-2">
@@ -136,7 +136,7 @@ const PricingPlans: React.FC = () => {
               ))}
             </ul>
 
-            <h4 className="text-lg font-semibold mb-3">Features</h4>
+            <h4 className="text-lg font-semibold mb-3 text-white">Features</h4>
             <ul className="space-y-2 text-gray-300">
               {plan.features.map((feature, i) => (
                 <li key={i} className="flex items-start space-x-2">
